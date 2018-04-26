@@ -29,7 +29,7 @@ function Get-BarNight{
                 } else{
                     Write-Verbose "Updating file holding recent bars"
                     Add-Content "$location\RecentBars.txt" "$bar"
-                    if($ContentsRecent.Length -ge 5){
+                    if($ContentsRecent.Count -ge 5){
                         Get-Content "$location\RecentBars.txt" | Select-Object -Skip 1 | Set-Content "$location\RecentBars-temp.txt"
                         Move-Item "$location\RecentBars-temp.txt" "$location\RecentBars.txt" -Force
                     }
